@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
+import { mongoDb_url } from './config.js';
 
 dotenv.config();
 
-const mongoUrl = process.env.MONGODB_URL;
+const mongoUrl = mongoDb_url;
 
 if(!mongoUrl){
     throw new Error("MongoDb_Url is undefined is env variable");
