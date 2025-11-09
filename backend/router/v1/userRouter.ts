@@ -64,7 +64,7 @@ userRouter.post("/signin", async function (req, res) {
         }
 
         //@ts-ignore
-        jwt.sign({ id: userExist._id }, jwt_secret);
+        jwt.sign({ userId: userExist._id }, jwt_secret);
 
         res.status(200).json({ message: "Signin Successfully" });
 
