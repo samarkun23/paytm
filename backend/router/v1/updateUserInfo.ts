@@ -7,8 +7,8 @@ const updateUserInfoRouter = Router();
 
 const updateBody = zod.object({
     password: zod.string().optional(),
-    firstName: zod.string().optional(),
-    lastName: zod.string().optional()
+    userName: zod.string().optional(),
+    email: zod.string().optional()
 })
 
 
