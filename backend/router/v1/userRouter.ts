@@ -3,6 +3,7 @@ import { User } from '../../schema/userSchema.js';
 import bcrypt from 'bcrypt'
 import jwt from "jsonwebtoken"
 import { jwt_secret } from '../../config.js';
+import { Account } from '../../schema/accountSchema.js';
 
 const userRouter = Router();
 
@@ -27,6 +28,12 @@ userRouter.post("/signup", async function (req, res) {
             email,
             userName,
             hashedPassword
+        })
+
+        await Account.create({
+            //@ts-ignore
+            userId,
+            balance: 1 + Math.random() * 10000
         })
 
         res.status(200).json({ message: "User create successfully" })
@@ -62,6 +69,8 @@ userRouter.post("/signin", async function (req, res) {
                 message: "Password is incorrect"
             })
         }
+
+
 
         //@ts-ignore
         jwt.sign({ userId: userExist._id }, jwt_secret);
